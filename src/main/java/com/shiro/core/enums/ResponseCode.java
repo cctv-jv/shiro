@@ -17,7 +17,19 @@ public enum ResponseCode {
     /**
      * failed
      */
-    FAILED(1, "失败");
+    FAILED(1, "失败"),
+    /**
+     * Unauthorized
+     */
+    UNAUTHORIZED(40001, "未被授权"),
+    /**
+     * SystemInfo error
+     */
+    SYSTEM_ERROR(50000,"系统错误"),
+    /**
+     * Illegal parameter
+     */
+    ILLEGAL_PARAM(50001,"非法参数");
 
 
     private int code;
