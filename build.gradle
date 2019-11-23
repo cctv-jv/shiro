@@ -4,7 +4,7 @@ plugins {
     id 'java'
 }
 
-group = 'com.shrio'
+group = 'com.shiro'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
@@ -17,6 +17,25 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    //druid
+    compile 'com.alibaba:druid:1.1.6'
+    //mybatis
+    compile 'mysql:mysql-connector-java:5.1.45'
+    compile 'org.mybatis:mybatis-typehandlers-jsr310:1.0.2'
+    compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2'
+    // lombok
+    annotationProcessor 'org.projectlombok:lombok:1.18.4'
+    compileOnly 'org.projectlombok:lombok:1.18.4'
+    // fastjson
+    compile 'com.alibaba:fastjson:1.2.38'
+    // common
+    compile('org.apache.commons:commons-lang3:3.4')
+    compile('org.apache.commons:commons-collections4:4.1')
+    compile('commons-io:commons-io:2.6')
+    compile group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
+    // Aspect
+    compile 'org.aspectj:aspectjrt:1.8.13'
 }
 
 test {

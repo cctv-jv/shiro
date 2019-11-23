@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--日志配置-->
+<configuration>
+    <!--设置上下文名称,每个logger都关联到logger上下文，默认上下文名称为default-->
+    <contextName>apimonitor</contextName>
+    <property name="logDir" value="/shiroLog/logs/shiro"/>
+    <property name="backupDir" value="/shiroLog/logs/shiro/backup"/>
+    <!--控制台-->
+    <appender name="stdoutAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--按天生成输出日志-->
+    <appender name="infoAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logDir}/info.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${backupDir}/info.%d{yyyyMMdd}.log.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="errorAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logDir}/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${backupDir}/error.%d{yyyyMMdd}.log.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--logger用来设置某一个包或具体的某一个类的日志打印级别-->
+    <logger name="com.shiro.core" level="DEBUG" additivity="false">
+        <appender-ref ref="infoAppender" />
+        <appender-ref ref="errorAppender" />
+        <appender-ref ref="stdoutAppender" />
+    </logger>
+
+    <!--根级别-->
+    <root level="DEBUG">
+        <appender-ref ref="errorAppender" />
+        <appender-ref ref="stdoutAppender" />
+    </root>
+
+    <!--分spring profile(环境进行配置)-->
+    <springProfile name="dev">
+        <logger></logger>
+    </springProfile>
+</configuration>
+
+

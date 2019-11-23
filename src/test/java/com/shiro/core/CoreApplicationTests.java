@@ -1,4 +1,4 @@
-package com.shrio.core;
+package com.shiro.core;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
