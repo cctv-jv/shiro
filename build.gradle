@@ -36,6 +36,10 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
     // Aspect
     compile 'org.aspectj:aspectjrt:1.8.13'
+    //shiro
+    compile group: 'org.apache.shiro', name: 'shiro-core', version: '1.4.0'
+    compile group: 'org.apache.shiro', name: 'shiro-spring', version: '1.4.0'
+    compile group: 'org.apache.shiro', name: 'shiro-ehcache', version: '1.4.0'
 }
 
 test {
